@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="지자체 협력사업 신청액을 인구 기준 한도액과 비교해 승인 또는 반려로 자동 판정합니다.">
+  <title>협력사업 예산 자동 판정</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <p class="eyebrow">자치행정 협력사업</p>
+      <h1>협력사업 예산 자동 판정</h1>
+      <p class="subtitle">지자체별 신청액을 인구 기준 한도액과 비교하여 자동 판정합니다.</p>
+      <p class="rule">한도액 = 인구수 × 10원 · 신청액이 한도액보다 크면 반려</p>
+    </header>
+
+    <section class="summary" aria-label="판정 요약">
+      <article class="card approved"><span>승인 건수</span><strong id="approvedCount">-</strong></article>
+      <article class="card rejected"><span>반려 건수</span><strong id="rejectedCount">-</strong></article>
+      <article class="card total"><span>승인 신청액 합계</span><strong id="approvedTotal">-</strong></article>
+    </section>
+
+    <section class="panel" aria-labelledby="listTitle">
+      <div class="panel-head">
+        <h2 id="listTitle">지자체 신청 현황</h2>
+        <span id="status" role="status">신청목록.json 불러오는 중…</span>
+      </div>
+      <div class="error" id="error" role="alert" hidden></div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th scope="col">지자체명</th><th scope="col">인구수</th><th scope="col">신청액</th><th scope="col">한도액</th><th scope="col">판정</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+    <footer>데이터: 신청목록.json · 금액 단위: 원</footer>
+  </main>
+</body>
+</html>
